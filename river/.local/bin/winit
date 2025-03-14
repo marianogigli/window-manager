@@ -1,0 +1,19 @@
+#!/bin/sh
+
+export MOZ_ENABLE_WAYLAND=1
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=river
+export XCURSOR_SIZE=32
+export XCURSOR_THEME=Adwaita
+export XCURSOR_THEME=Breeze_Obsidian
+export WLR_NO_HARDWARE_CURSORS=1
+
+#timestamp=$(date +%F-%H%M)
+timestamp=$(date +%F)
+# river -log-level [error|warn|info|debug]
+exec dbus-run-session -- river -log-level info > /tmp/river-${timestamp}.log 2>&1
+#exec dbus-launch --exit-with-session river -log-level info > /tmp/river-${timestamp}.log 2>&1
+
+
+
+

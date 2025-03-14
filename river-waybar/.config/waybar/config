@@ -1,0 +1,67 @@
+{
+	"layer": "top",
+	"modules-left": ["custom/launcher","tray"],
+	"modules-center": ["river/tags",  "clock"],
+	"modules-right": ["network", "backlight", "pulseaudio", "battery", "custom/power"],
+	
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon} {volume}% {format_source}",
+		"format-muted": "{icon} {volume}%",
+		"format-icons": {
+            "default": ["", "", ""]
+		},
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "on-click": "pavucontrol"
+	},
+    
+    "custom/launcher":{
+        "format": "",
+        "on-click": "wofi --show drun,run",
+        "on-click-right": "pkill wofi"
+    },
+    "tray":{
+        "icon-size":18,
+        "spacing": 10
+    },
+
+    "river/tags": {
+		"num-tags": 5
+    },
+
+	"network": {
+		"tooltip": false,
+		"format-wifi": "  {essid}",
+		"format-ethernet": "",
+        "on-click": "connman-gtk"
+	},
+	"backlight": {
+		"tooltip": false,
+        "device": "intel_backlight",
+		"format": " {}%",
+		"interval":1,
+        "on-scroll-up": "light -A 5",
+		"on-scroll-down": "light -U 5"
+	},
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 10,
+            "critical": 5
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "clock": {
+        "format": "{: %a %d %b  %H:%M}"
+    },
+    "custom/power":{
+        "format": "",
+        "on-click": "riverctl spawn 'wlogout -b 4 -p layer-shell'"
+    }
+}

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+physlock -l #prevent tty switching
+swaylock
+physlock -L # reenable tty switching
